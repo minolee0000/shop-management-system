@@ -39,49 +39,49 @@ function Order() {
     }
 
     return (
-        <div className="container mx-auto py-10">
-            <h1 className="text-4xl font-bold mb-10 text-center text-blue-800 p-4 rounded-lg bg-blue-100 shadow-md">
+        <div className="container mx-auto py-8">
+            <h1 className="text-3xl font-semibold text-gray-800 mb-6 text-center">
                 Orders
             </h1>
             
-            <div className="flex justify-end mb-6">
+            <div className="flex justify-end mb-4">
                 <Link
-                    to="/orders/CreateOrder" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-5 rounded-md transition duration-200 shadow-sm"
+                    to="/orders/CreateOrder"
+                    className="bg-gray-800 text-white py-2 px-4 rounded-md shadow-sm hover:bg-gray-900 transition duration-150"
                 >
-                    Create Order
+                    + Create Order
                 </Link>
             </div>
-    
-            <table className="min-w-full bg-white shadow rounded-lg overflow-hidden border border-slate-200">
-                <thead className="bg-blue-700 text-white uppercase text-sm">
-                    <tr>
-                        <th className="font-semibold py-4 px-6 text-left">Order ID</th>
-                        <th className="py-5 px-5 text-left">Order Date and Time</th>
-                        <th className="py-5 px-5 text-left">Total Amount</th>
-                        <th className="py-5 px-5 text-left">Actions</th>
-                    </tr>
-                </thead>
-                <tbody className="text-slate-700 text-sm">
-                    {orders.map((order) => (
-                        <tr key={order.id} className="border-b border-slate-200 hover:bg-gray-100 transition-colors">
-                            <td className="py-4 px-6 text-left">{order.id}</td>
-                            <td className="py-4 px-6 text-left">{new Date(order.orderDateTime).toLocaleString()}</td>
-                            <td className="py-4 px-6 text-left">Rs. {order.totalPrice.toFixed(2)}</td>
-                            <td className="py-4 px-6 text-left flex space-x-2">
-                                <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-200 shadow-sm">
-                                    Edit
-                                </button>
-                                <button onClick={() => deleteOrder(order.id)} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition duration-200 shadow-sm" >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {orders.map((order) => (
+                    <div key={order.id} className="p-5 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition duration-150">
+                        <h2 className="text-xl font-semibold text-gray-800 mb-2">Order #{order.id}</h2>
+                        <p className="text-gray-600">
+                            <span className="font-medium">Date:</span> {new Date(order.orderDateTime).toLocaleString()}
+                        </p>
+                        <p className="text-gray-600">
+                            <span className="font-medium">Total:</span> Rs. {order.totalPrice.toFixed(2)}
+                        </p>
+                        
+                        <div className="flex justify-between mt-4">
+                            <button
+                                className="text-gray-800 hover:text-gray-600 transition duration-150"
+                            >
+                                Edit
+                            </button>
+                            <button
+                                onClick={() => deleteOrder(order.id)}
+                                className="text-red-600 hover:text-red-400 transition duration-150"
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
-    
 }
 
 export default Order;
