@@ -45,7 +45,6 @@ public class ProductController {
         product.setPrice(productReqDTO.getPrice());
         product.setDescription(productReqDTO.getDescription());
 
-        //find category by categoryId in productReqDTO and assign it to new Product.
         Category category = categoryService.getCategoryById(productReqDTO.getCategoryId());
         product.setCategory(category);
 
@@ -61,7 +60,6 @@ public class ProductController {
         product.setPrice(productReqDTO.getPrice());
         product.setDescription(productReqDTO.getDescription());
 
-        //find category by categoryId in productReqDTO and assign it to new Product.
         Category category = categoryService.getCategoryById(productReqDTO.getCategoryId());
         product.setCategory(category);
 

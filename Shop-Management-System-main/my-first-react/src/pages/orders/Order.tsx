@@ -20,10 +20,19 @@ function Order() {
         }
     }, [isAuthenticated]);
 
-    async function loadOrders() {
+    async function loadOrders(){
         try {
             const response = await axios.get("http://localhost:8080/orders", config);
             setOrders(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async function deleteOrder(id: number) {
+        try {
+            await axios.delete(`http://localhost:8080/orders/${id}`, config);
+            loadOrders();
         } catch (error) {
             console.log(error);
         }
@@ -62,7 +71,7 @@ function Order() {
                                 <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-200 shadow-sm">
                                     Edit
                                 </button>
-                                <button className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition duration-200 shadow-sm">
+                                <button onClick={() => deleteOrder(order.id)} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md transition duration-200 shadow-sm" >
                                     Delete
                                 </button>
                             </td>

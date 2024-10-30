@@ -10,4 +10,5 @@ import com.example.demo.entity.Order;
 public interface OrderService {
     List<Order> getAllOrders();
     Order createOrder(Order order);
+    void deleteOrder(Long id);
 }

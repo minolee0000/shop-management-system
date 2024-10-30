@@ -7,7 +7,7 @@ function ContactUs() {
                 <h2 className="text-2xl md:text-3xl font-semibold text-center text-blue-700 mb-6">Get in Touch</h2>
 
                 <div className="space-y-6">
-                    {/* Location Block */}
+
                     <div className="p-4 bg-blue-50 rounded-md shadow-sm">
                         <h3 className="text-lg font-medium text-blue-600 text-center mb-2">Our Location</h3>
                         <p className="text-center text-gray-700"> University of Moratuwa</p>

@@ -120,7 +120,6 @@ function Product() {
         <div className="container mx-auto py-5">
             <h1 className="text-4xl font-bold mb-8 text-center text-blue-800">Product Management</h1>
     
-            {/* Product Table */}
             <div className="overflow-x-auto">
                 <table className="min-w-full border border-gray-300 bg-blue-50 shadow-sm rounded-lg">
                     <thead className="bg-blue-700 text-white uppercase text-sm">
@@ -156,7 +155,6 @@ function Product() {
                     </tbody>
                 </table>
     
-                {/* Product Form */}
                 <form className="max-w-md mx-auto bg-white p-6 rounded-md shadow-lg mt-8">
                     <div className="mb-4">
                         <label className="text-lg block mb-2 font-semibold text-gray-800">Product Name</label>

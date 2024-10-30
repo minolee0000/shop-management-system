@@ -4,22 +4,19 @@ import { useAuth } from "../context/AuthContext";
 import CategoryType from "../type/categoryType";
 
 function Category() {
-    // State for categories and new category input
+
     const [categories, setCategories] = useState<CategoryType[]>([]);
     const [categoryName, setCategoryName] = useState<string>("");
 
-    // Authentication context
     const { isAuthenticated, jwtToken } = useAuth();
     const config = { headers: { Authorization: `Bearer ${jwtToken}` } };
 
-    // Load categories when the component mounts and user is authenticated
     useEffect(() => {
         if (isAuthenticated) {
             loadCategories();
         }
     }, [isAuthenticated]);
 
-    // Fetch categories from the API
     async function loadCategories() {
         try {
             const response = await axios.get("http://localhost:8080/category", config);
@@ -29,12 +26,10 @@ function Category() {
         }
     }
 
-    // Update category name input
     function handleCategoryName(event: React.ChangeEvent<HTMLInputElement>) {
         setCategoryName(event.target.value);
     }
 
-    // Handle form submission to create a new category
     async function handleSubmit(event: React.FormEvent) {
         event.preventDefault();
         const data = { name: categoryName };
@@ -47,13 +42,10 @@ function Category() {
         }
     }
 
-    // Render component
     return (
         <div className="container mx-auto p-8 bg-gray-50 min-h-screen">
-            {/* Heading */}
             <h1 className="text-5xl font-bold mb-6 text-center text-slate-800">Category</h1>
 
-            {/* Category List */}
             <div className="flex justify-center">
                 <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg text-center mb-6">
                     {categories.length > 0 ? (
@@ -68,7 +60,6 @@ function Category() {
                 </div>
             </div>
 
-            {/* Form for Creating New Category */}
             <div className="flex justify-center">
                 <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg">
                     <h2 className="text-3xl font-semibold text-slate-800 mb-4">Create New Category</h2>
